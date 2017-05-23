@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCooking", "HomeCooking\HomeCooking.csproj", "{007D377E-95A0-437C-918F-106CB78DA9BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCooking.Poco", "HomeCooking.Poco\HomeCooking.Poco.csproj", "{E2C680E6-D723-4A6D-B709-AA6F89076A03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCooking.Data", "HomeCooking.Data\HomeCooking.Data.csproj", "{58100C03-D606-4940-ACD5-8BC9408CFFDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCooking.Core", "HomeCooking.Core\HomeCooking.Core.csproj", "{7C2DEA62-F78F-4BCF-B41C-AD918B25A42A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCooking.Console", "HomeCooking.Console\HomeCooking.Console.csproj", "{E8A77AA9-17A9-45DC-A55A-6459C8CA0144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCooking.Repository", "HomeCooking.Repository\HomeCooking.Repository.csproj", "{161C7119-814D-4C08-AE73-3E9D6F4DB9BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{905A8AC5-129A-4360-99E3-C68599E2D4AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +21,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{007D377E-95A0-437C-918F-106CB78DA9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{007D377E-95A0-437C-918F-106CB78DA9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{007D377E-95A0-437C-918F-106CB78DA9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{007D377E-95A0-437C-918F-106CB78DA9BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2C680E6-D723-4A6D-B709-AA6F89076A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2C680E6-D723-4A6D-B709-AA6F89076A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2C680E6-D723-4A6D-B709-AA6F89076A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2C680E6-D723-4A6D-B709-AA6F89076A03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58100C03-D606-4940-ACD5-8BC9408CFFDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58100C03-D606-4940-ACD5-8BC9408CFFDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58100C03-D606-4940-ACD5-8BC9408CFFDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58100C03-D606-4940-ACD5-8BC9408CFFDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C2DEA62-F78F-4BCF-B41C-AD918B25A42A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C2DEA62-F78F-4BCF-B41C-AD918B25A42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C2DEA62-F78F-4BCF-B41C-AD918B25A42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C2DEA62-F78F-4BCF-B41C-AD918B25A42A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8A77AA9-17A9-45DC-A55A-6459C8CA0144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8A77AA9-17A9-45DC-A55A-6459C8CA0144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8A77AA9-17A9-45DC-A55A-6459C8CA0144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8A77AA9-17A9-45DC-A55A-6459C8CA0144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{161C7119-814D-4C08-AE73-3E9D6F4DB9BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{161C7119-814D-4C08-AE73-3E9D6F4DB9BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{161C7119-814D-4C08-AE73-3E9D6F4DB9BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{161C7119-814D-4C08-AE73-3E9D6F4DB9BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
