@@ -1,0 +1,24 @@
+﻿@model HomeCooking.Web.ViewModels.Home.HomeViewModel
+@{
+    ViewBag.Title = "HomeCooking";
+}
+<div class="row">
+    <div class="col-md-4">
+        <h2>Les recettes</h2>
+        <ul>
+           @foreach(var recipe in Model.Recipes)
+           {
+               <li>@recipe.Name (@recipe.CreatorName)</li>
+           }
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h2>Les utilisateurs</h2>
+        <ul>
+            @foreach (string user in Model.Users)
+            {
+                <li>@user</li>
+            }
+        </ul>
+    </div>
+</div>

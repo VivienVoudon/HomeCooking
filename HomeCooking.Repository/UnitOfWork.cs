@@ -1,74 +1,111 @@
-﻿using HomeCooking.Data;
-using HomeCooking.Poco;
+﻿#region
+
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel.Design;
+using System.Data;
+using System.Data.Common;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
+using System.Threading;
 using System.Threading.Tasks;
+using Repository.Pattern.DataContext;
+using Repository.Pattern.Repositories;
+using Repository.Pattern.UnitOfWork;
+using HomeCooking.Data;
+
+#endregion
 
 namespace HomeCooking.Repository
 {
-    public class HcUnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWorkAsync
     {
-        private HCContext _dbContext = null;
-        public HcUnitOfWork()
+        #region Private Fields
+
+        private HCContext _dataContext;
+        private bool _disposed;
+        private Dictionary<string, dynamic> _repositories;
+
+        #endregion Private Fields
+
+        #region Constuctor/Dispose
+
+        public UnitOfWork()
         {
-            _dbContext = new HCContext();
-        }
-
-        // Add all the repository handles here
-        UserRepository contactRepository = null;
-        RecipeRepository recipeRepository = null;
-
-        // Add all the repository getters here
-        public UserRepository UserRepository
-        {
-            get
-            {
-                if (contactRepository == null)
-                {
-                    contactRepository = new UserRepository(_dbContext);
-                }
-
-                return contactRepository;
-            }
-        }
-        public RecipeRepository RecipeRepository
-        {
-            get
-            {
-                if (recipeRepository == null)
-                {
-                    recipeRepository = new RecipeRepository(_dbContext);
-                }
-
-                return recipeRepository;
-            }
-        }
-
-        public void SaveChanges()
-        {
-            _dbContext.SaveChanges();
-        }
-        
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    _dbContext.Dispose();
-                }
-            }
-            disposed = true;
+            _dataContext = new HCContext();
+            _repositories = new Dictionary<string, dynamic>();
         }
 
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            if (disposing)
+            {
+                // free other managed objects that implement
+                // IDisposable only
+
+                if (_dataContext != null)
+                {
+                    _dataContext.Dispose();
+                    _dataContext = null;
+                }
+            }
+
+            // release any unmanaged objects
+            // set the object references to null
+
+            _disposed = true;
+        }
+
+        #endregion Constuctor/Dispose
+
+        public int SaveChanges()
+        {
+            return _dataContext.SaveChanges();
+        }
+
+        public IRepository<TEntity> Repository<TEntity>() where TEntity : class
+        {
+            return RepositoryAsync<TEntity>();
+        }
+
+        public Task<int> SaveChangesAsync()
+        {
+            return _dataContext.SaveChangesAsync();
+        }
+
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            return _dataContext.SaveChangesAsync(cancellationToken);
+        }
+
+        public IRepositoryAsync<TEntity> RepositoryAsync<TEntity>() where TEntity : class
+        {
+            if (_repositories == null)
+            {
+                _repositories = new Dictionary<string, dynamic>();
+            }
+
+            var type = typeof(TEntity).Name;
+
+            if (_repositories.ContainsKey(type))
+            {
+                return (IRepositoryAsync<TEntity>)_repositories[type];
+            }
+
+            var repositoryType = typeof(Repository<>);
+
+            _repositories.Add(type, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _dataContext, this));
+
+            return _repositories[type];
         }
     }
 }

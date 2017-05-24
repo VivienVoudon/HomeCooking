@@ -63,6 +63,10 @@
       <Project>{161C7119-814D-4C08-AE73-3E9D6F4DB9BB}</Project>
       <Name>HomeCooking.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Repository.Pattern\Repository.Pattern.csproj">
+      <Project>{6E682A14-C872-4813-B620-76E108DEA683}</Project>
+      <Name>Repository.Pattern</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
