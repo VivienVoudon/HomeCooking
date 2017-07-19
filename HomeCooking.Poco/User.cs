@@ -14,12 +14,10 @@ namespace HomeCooking.Poco
         public string NickName { get; set; }
 
         public ICollection<Recipe> Recipes { get; set; }
-        //public ICollection<Recipe> FollowedRecipes { get; set; }
 
         public User()
         {
             this.Recipes = new HashSet<Recipe>();
-         //   this.FollowedRecipes = new HashSet<Recipe>(); 
         }
     }
 }

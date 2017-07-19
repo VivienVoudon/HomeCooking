@@ -27,7 +27,6 @@ namespace HomeCooking.Data
 
             EntityTypeConfiguration<User> userConf = modelBuilder.Entity<User>();
             userConf.ToTable("users");
-            //recipeConf.HasOptional<Recipe>(o => o.).WithMany(o => o.Recipes);
 
             base.OnModelCreating(modelBuilder);
         }
